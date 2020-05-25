@@ -13,8 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <form  action="{{route('member.index')}}" method="get">
+                      <button type="submit" class="btn btn-success">
+                        メンバー一覧
+                      </button>
+                    </form>
 
-                    You are logged in!
                 </div>
             </div>
         </div>

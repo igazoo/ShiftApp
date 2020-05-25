@@ -30,3 +30,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
 });
+
+Route::get('member/index','MemberController@index')->name('member.index');
+Route::get('member/create','MemberController@create')->name('member.create');
+Route::post('member/store','MemberController@store')->name('member.store');
+Route::get('member/show/{id}','MemberController@show')->name('member.show');
+Route::get('member/edit/{id}','MemberController@edit')->name('member.edit');
+Route::post('member/update/{id}','MemberController@update')->name('member.update');
+Route::post('member/destroy/{id}','MemberController@destroy')->name('member.destroy');
