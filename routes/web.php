@@ -38,3 +38,6 @@ Route::get('member/show/{id}','MemberController@show')->name('member.show');
 Route::get('member/edit/{id}','MemberController@edit')->name('member.edit');
 Route::post('member/update/{id}','MemberController@update')->name('member.update');
 Route::post('member/destroy/{id}','MemberController@destroy')->name('member.destroy');
+
+Route::get('shift/index','ShiftController@index')->name('shift.index');
+Route::get('shift/create' , 'ShiftController@create')->name('shift.create');

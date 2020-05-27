@@ -18,6 +18,12 @@
                         メンバー一覧
                       </button>
                     </form>
+                    <form  action="{{route('shift.create')}}" method="get">
+                      <button type="submit" class="btn btn-info">
+                        シフト
+                      </button>
+                    </form>
+
 
                 </div>
             </div>
