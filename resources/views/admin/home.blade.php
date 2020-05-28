@@ -18,9 +18,9 @@
                         メンバー一覧
                       </button>
                     </form>
-                    <form  action="{{route('shift.create')}}" method="get">
+                    <form  action="{{route('shift.index')}}" method="get">
                       <button type="submit" class="btn btn-info">
-                        シフト
+                        シフト一覧
                       </button>
                     </form>
 

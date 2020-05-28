@@ -8,13 +8,14 @@
         <div class="card-header">シフト作成</div>
 
           <div class="card-body">
-            <form method="" action="">
+            <form method="post" action="{{route('shift.store')}}">
+              @csrf
               <lavel>
-                 <input type="date" />
+                 <input type="date" name="date" />
               </label>
 
               <label class="time">開始時間
-                  <input type="time"  list="data1">
+                  <input type="time"  list="data1"name="start_time">
                   <datalist id="data1">
                   <option value="08:00"></option>
                   <option value="09:00"></option>
@@ -25,7 +26,7 @@
 
                 </label>
               <label class="time">終わり時間
-                <input type="time"  list="data2">
+                <input type="time"  list="data2" name="end_time">
                 <datalist id="data2">
                 <option value="08:00"></option>
                 <option value="09:00"></option>
@@ -37,12 +38,15 @@
               </label>
 
 
-              <select class="" name="">
+              <select  name="member_id">
                 @foreach ($members as $member)
                 <option value={{$member->id}}>{{$member->name}}</option>
                 @endforeach
 
               </select>
+
+              <input class="btn btn-info" type="submit" value="登録する">
+
           </form>
 
            </div>

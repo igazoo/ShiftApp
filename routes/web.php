@@ -41,3 +41,7 @@ Route::post('member/destroy/{id}','MemberController@destroy')->name('member.dest
 
 Route::get('shift/index','ShiftController@index')->name('shift.index');
 Route::get('shift/create' , 'ShiftController@create')->name('shift.create');
+Route::post('shift/store', 'ShiftController@store')->name('shift.store');
+Route::get('shift/show/{id}', 'ShiftController@show')->name('shift.show');
+Route::get('shift/edit/{id}','ShiftController@edit')->name('shift.edit');
+Route::post('shift/update/{id}','ShiftController@update')->name('shift.update');

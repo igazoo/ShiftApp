@@ -16,6 +16,18 @@ class ShiftController extends Controller
     public function index()
     {
         //
+        $members = DB::table('members')
+        ->select('id','name')
+        ->get();
+
+        $shifts =  DB::table('shifts')
+         ->select('id','date','start_time','end_time','member_id')
+         ->orderBy('created_at','desc')
+         ->get();
+
+
+
+        return view('shift.index',compact('shifts', 'members'));
     }
 
     /**
@@ -39,6 +51,14 @@ class ShiftController extends Controller
     public function store(Request $request)
     {
         //
+        $shift = new Shift;
+        $shift->date = $request->input('date');
+        $shift->start_time = $request->input('start_time');
+        $shift->end_time = $request->input('end_time');
+        $shift->member_id = $request->input('member_id');
+
+        $shift->save();
+        return redirect('shift/index');
     }
 
     /**
@@ -50,6 +70,9 @@ class ShiftController extends Controller
     public function show($id)
     {
         //
+        $shift = Shift::find($id);
+
+        return view('shift.show', compact('shift'));
     }
 
     /**
@@ -61,6 +84,9 @@ class ShiftController extends Controller
     public function edit($id)
     {
         //
+        $shift = Shift::find($id);
+
+        return view('shift.edit', compact('shift'));
     }
 
     /**
@@ -73,6 +99,13 @@ class ShiftController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $shift = Shift::find($id);
+
+        $shift->date = $request->input('date');
+        $shift->start_time = $request->input('start_time');
+        $shift->end_time = $request->input('end_time');
+        $shift->save();
+        return redirect('shift/index');
     }
 
     /**
