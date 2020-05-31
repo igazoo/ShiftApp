@@ -15,18 +15,19 @@
               </label>
 
               <label class="time">開始時間
-                  <input type="time"  list="data1"name="start_time">
+                  <input type="time"  list="data1"name="start_time"　step="1800">
                   <datalist id="data1">
                   <option value="08:00"></option>
                   <option value="09:00"></option>
                   <?php for($i=1;$i <= 24; $i++): ?>
                   <option value="<?php echo $i.':00' ?>"></option>
+
                   <?php endfor; ?>
                   </datalist>
 
                 </label>
               <label class="time">終わり時間
-                <input type="time"  list="data2" name="end_time">
+                <input type="time"  list="data2" name="end_time"　step="1800">
                 <datalist id="data2">
                 <option value="08:00"></option>
                 <option value="09:00"></option>

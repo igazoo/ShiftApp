@@ -14,7 +14,7 @@
           </div>
           @endif
 
-          {{$shift->id}}
+          1日の給料　{{$shift->money}}円
 
           <form class="" action="{{route('shift.edit',['id'=>$shift->id])}}" method="get">
             @csrf

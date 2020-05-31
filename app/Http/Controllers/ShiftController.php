@@ -13,21 +13,41 @@ class ShiftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $search_date = $request->input('date');
+
+
         $members = DB::table('members')
         ->select('id','name')
         ->get();
 
-        $shifts =  DB::table('shifts')
-         ->select('id','date','start_time','end_time','member_id')
-         ->orderBy('created_at','desc')
-         ->get();
+         //検索フォーム用
 
 
 
-        return view('shift.index',compact('shifts', 'members'));
+         // //もしキーワードがあったら
+         // if($search !== null){
+         //   //全角スペースをを半角に
+         //   $search_split = mb_convert_kana($search,'s');
+         //
+         //   //空白で区切る
+         //   $search_split2 = preg_split('/[\s] + /', $search_split,-1,PREG_SPLIT_NO_EMPTY);
+         //   //単語をループでまわす
+         //   foreach($search_split2 as $value)
+         //   {
+         //     $shifts->where('name','like','%'.$value.'%');
+         //   }
+         // };
+         $shifts =  DB::table('shifts')
+          ->select('id','date','start_time', 'end_time', 'member_id')
+          ->orderBy('created_at','desc')
+          ->get();
+
+
+
+        return view('shift.index',compact('shifts', 'search_date','members'));
     }
 
     /**
@@ -56,7 +76,19 @@ class ShiftController extends Controller
         $shift->start_time = $request->input('start_time');
         $shift->end_time = $request->input('end_time');
         $shift->member_id = $request->input('member_id');
+        //給料
+        //開始時間と終了時間の差分と時給を掛け算してmoneyカラムに保存する
+        $start =  strtotime($shift->start_time);
+        $end =  strtotime($shift->end_time);
+        //時給１０００円
+        $hourly_wage = 1000;
 
+
+        $start_hour = idate('H',$start);
+        $end_hour = idate('H',$end);
+        $hour = intval($end_hour) - intval($start_hour);
+
+        $shift->money = intval($hour) * $hourly_wage;
         $shift->save();
         return redirect('shift/index');
     }
