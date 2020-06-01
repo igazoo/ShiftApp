@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.admin_home')
 
 @section('content')
 <div class="container">
@@ -26,49 +26,68 @@
           <table class="table">
             <thead>
               <tr>
-                <th>名前</th>
                 <th scope="col">日付</th>
+                <th>名前</th>
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
-
                 <th scope="col">詳細</th>
               </tr>
             </thead>
             <tbody>
-
               @foreach($shifts as $shift)
               @if($shift->date == $search_date)
               <tr>
+                <td>検索日付{{$shift->date}}</td>
                 @foreach($members as $member)
                 @if($member->id == $shift->member_id)
                 <td>{{$member->name}}</td>
                 @endif
                 @endforeach
-                <td>{{$shift->date}}</td>
                 <?php
                 $start =  strtotime($shift->start_time);
                 $start_hour = idate('H',$start);
-                 ?>
+                ?>
                 <td>{{$start_hour}}時</td>
                 <?php
                 $end =  strtotime($shift->end_time);
                 $end_hour = idate('H',$end);
-                 ?>
+                ?>
                 <td>{{$end_hour}}時</td>
                 <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
 
-              </tr>
-              @endif
+                </tr>
 
-              @endforeach
+                @elseif($today == $shift->date)
 
+                <tr>
+                  <td>{{$shift->date}}</td>
+                  @foreach($members as $member)
+                  @if($member->id == $shift->member_id)
+                  <td>{{$member->name}}</td>
+                  @endif
+                  @endforeach
 
-            </tbody>
-          </table>
+                  <?php
+                  $start =  strtotime($shift->start_time);
+                  $start_hour = idate('H',$start);
+                  ?>
+                  <td>{{$start_hour}}時</td>
+                  <?php
+                  $end =  strtotime($shift->end_time);
+                  $end_hour = idate('H',$end);
+                  ?>
+                  <td>{{$end_hour}}時</td>
+                  <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
 
+                  </tr>
+                  @endif
+                  @endforeach
+                </tbody>
+              </table>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-@endsection
+    @endsection

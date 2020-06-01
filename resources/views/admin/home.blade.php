@@ -13,18 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form  action="{{route('member.index')}}" method="get">
-                      <button type="submit" class="btn btn-success">
-                        メンバー一覧
-                      </button>
-                    </form>
-                    <form  action="{{route('shift.index')}}" method="get">
-                      <button type="submit" class="btn btn-info">
-                        シフト一覧
-                      </button>
-                    </form>
-
-
+                  管理人ページ
                 </div>
             </div>
         </div>

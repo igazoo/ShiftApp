@@ -18,7 +18,7 @@ class MemberController extends Controller
         //
         $members =  DB::table('members')
          ->select('id','name','gender','type')
-         ->orderBy('created_at','desc')
+         ->orderBy('type','asc')
          ->get();
 
 

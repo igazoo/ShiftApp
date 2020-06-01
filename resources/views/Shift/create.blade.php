@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.admin_home')
 
 @section('content')
 <div class="container">
@@ -37,15 +37,11 @@
                 </datalist>
 
               </label>
-
-
               <select  name="member_id">
                 @foreach ($members as $member)
                 <option value={{$member->id}}>{{$member->name}}</option>
                 @endforeach
-
               </select>
-
               <input class="btn btn-info" type="submit" value="登録する">
 
           </form>

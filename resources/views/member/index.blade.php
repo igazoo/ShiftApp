@@ -1,11 +1,11 @@
-@extends('layouts.app_admin')
+@extends('layouts.admin_home')
 
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">従業員</div>
+        <div class="card-header">従業員一覧</div>
 
         <div class="card-body">
           @if (session('status'))
