@@ -42,8 +42,6 @@
     color: #000;
   }
 
-
-
   input[type="date"]::-webkit-inner-spin-button{
     -webkit-appearance: none;
   }
@@ -68,29 +66,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
-
           </ul>
-
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
-
             <li class="nav-item">
               <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト') }}</a>
             </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('member.index') }}">{{ __('従業員') }}</a>
-              </li>
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('member.index') }}">{{ __('従業員') }}</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <main class="py-4">
-    @yield('content')
-  </main>
-</div>
-
+    <main class="py-4">
+      @yield('content')
+    </main>
+  </div>
 </body>
 </html>

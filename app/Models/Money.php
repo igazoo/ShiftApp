@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Money extends Model
 {
     //
-    public function Shifts(){
+    public function shifts(){
       return $this->hasMany('App\Models\Shift');
     }
 
-    public function money(){
-      return $this->belongsTo('App\Models\Money');
+    public function members(){
+      return $this->hasMany('App\Models\Members');
     }
 }

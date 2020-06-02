@@ -9,6 +9,10 @@ class Shift extends Model
     //
 
     public function member(){
-      return $this->belongso('App\Models\Member');
+      return $this->belongTo('App\Models\Member');
+    }
+
+    public function money(){
+      return $this->belongsTo('App\Models\Money');
     }
 }

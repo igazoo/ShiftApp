@@ -6,15 +6,12 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">従業員一覧</div>
-
         <div class="card-body">
           @if (session('status'))
           <div class="alert alert-success" role="alert">
             {{ session('status') }}
           </div>
           @endif
-
-
           <form  action="{{route('member.create')}}" method="get">
             <button type="submit" class="btn btn-primary">
               新規登録
@@ -49,10 +46,8 @@
                 <td><a href="{{route('member.show', ['id' => $member->id])}}">詳細</td>
               </tr>
               @endforeach
-
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
