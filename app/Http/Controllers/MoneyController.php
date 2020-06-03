@@ -19,6 +19,8 @@ class MoneyController extends Controller
     public function index()
     {
         //
+        $moneys = DB::table('moneys')->all()->get();
+        return view('money.index',compact('moneys'));
     }
 
     /**
@@ -47,18 +49,15 @@ class MoneyController extends Controller
     public function store(Request $request)
     {
         //
-        $shifts = Shift::all();
+
         $shift_dates = [];
 
         //シフトのdateだけに分ける
-        foreach($shifts as $shift){
-          $shift_date[] = $shift->date;
-        }
+        $shifts = DB::table('shifts')->get();
 
-        //シフトの従業員idだけに分ける
-        $shifts_member_id = [];
         foreach($shifts as $shift){
-          $shifts_member_id[] = $shift->id;
+          $shift_dates = $shift->date;
+
         }
 
 
@@ -69,30 +68,31 @@ class MoneyController extends Controller
         //取得した日付の年
         $input_year = $input_date->year;
         //取得した日付の月
-        $input_day = $input_date->month;
+        $input_month = $input_date->month;
 
         //取得した日付とシフトテーブルを比較し、一致した日付があれば月と年を保存する
         foreach($shift_dates as $shift_date){
           if($input_date == $shift_date){
-            $money->year = $input_date->year;
-            $money->month = $input_date->month;
+            $money->year = $input_year;
+            $money->month = $input_month;
           }
 
           //選択された従業員のid保存
           $money->member_id = $request->input('member_id');
+          $sum_money = [];
 
-          // $sum_money = [];
-          // foreach($shifts_member_id as $shift_member_id){
-          //   if($shift_member_id == $money->member_id){
-          //
-          //   }
-          // }
+            foreach($shifts as $shift){
+              if($money->member_id == $shift->member_id){
+                $sum_money[]= $shift->money;
+              }
+            }
 
+           $money->month_money =array_sum($sum_money);
 
-
-
-
+           $money->save();
+           return redirect('money/index');
     }
+  }
 
     /**
      * Display the specified resource.

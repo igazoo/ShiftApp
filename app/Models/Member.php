@@ -11,7 +11,5 @@ class Member extends Model
       return $this->hasMany('App\Models\Shift');
     }
 
-    public function money(){
-      return $this->belongsTo('App\Models\Money');
-    }
+  
 }

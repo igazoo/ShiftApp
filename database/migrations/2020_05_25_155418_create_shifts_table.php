@@ -20,6 +20,7 @@ class CreateShiftsTable extends Migration
             $table->time('end_time');
             $table->unsignedBigInteger('member_id');
             $table->integer('money');
+            $table->integer('month_money');
             $table->timestamps();
 
             $table->foreign('member_id')->references('id')->on('members');

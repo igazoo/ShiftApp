@@ -13,11 +13,10 @@ class CreateMoneyTable extends Migration
      */
     public function up()
     {
-        Schema::create('money', function (Blueprint $table) {
+        Schema::create('moneys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->Integer('month_money');
             $table->unsignedBigInteger('member_id');
-            $table->unsignedBigInteger('shift_id');
             $table->Integer('month');
             $table->Integer('year');
             $table->timestamps();
@@ -31,6 +30,6 @@ class CreateMoneyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('money');
+        Schema::dropIfExists('moneys');
     }
 }

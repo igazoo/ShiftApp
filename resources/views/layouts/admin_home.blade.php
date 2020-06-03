@@ -76,6 +76,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('member.index') }}">{{ __('従業員') }}</a>
             </li>
+          
           </ul>
         </div>
       </div>

@@ -8,13 +8,11 @@
         <div class="card-header">給料計算</div>
 
           <div class="card-body">
-            <form method="" action="">
+            <form method="post" action="route{{'money.store'}}">
               @csrf
               <lavel>
                  <input type="date" name="date" />
               </label>
-
-            
               <select  name="member_id">
                 @foreach ($members as $member)
                 <option value={{$member->id}}>{{$member->name}}</option>
