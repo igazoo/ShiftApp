@@ -8,17 +8,17 @@
         <div class="card-header">給料計算</div>
 
           <div class="card-body">
-            <form method="post" action="route{{'money.store'}}">
+            <form method="post" action="{{route('money.store')}}">
               @csrf
-              <lavel>
-                 <input type="date" name="date" />
-              </label>
               <select  name="member_id">
                 @foreach ($members as $member)
                 <option value={{$member->id}}>{{$member->name}}</option>
                 @endforeach
               </select>
-              <input class="btn btn-info" type="submit" value="登録する">
+
+          
+
+              <input class="btn btn-info" type="submit" value="計算する">
 
           </form>
 

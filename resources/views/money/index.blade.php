@@ -8,8 +8,9 @@
         <div class="card-header">給料</div>
 
           <div class="card-body">
-            {{$moneys->month_money}}
-
+            <form  action="{{route('money.create')}}" method="get">
+              <button type="submit" class = "btn btn-primary">新規登録</button>
+            </form>
           </form>
 
            </div>

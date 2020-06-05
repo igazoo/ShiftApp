@@ -32,10 +32,6 @@ class ShiftController extends Controller
     ->orderBy('start_time','asc')
     ->get();
 
-    $sum = Shift::sum("money");
-    var_dump($sum);
-
-
 
     return view('shift.index',compact('shifts', 'search_date','members','today'));
   }
@@ -78,6 +74,7 @@ class ShiftController extends Controller
     $hour = intval($end_hour) - intval($start_hour);
     //給料　＝　時間の差分　＊　時給　
     $shift->money = intval($hour) * $hourly_wage;
+    $shift->month_money = $shift->money;
 
     //入力された日付データを月と年に分ける　
     $input_date = Carbon::parse($shift->date);
@@ -86,22 +83,6 @@ class ShiftController extends Controller
 
     //既存の従業員のid
     $input_member_id = $shift->member_id;
-
-    //取得した月と年　従業員のidが存在していたら月給料にプラス　そうでないなら保存
-    $exit_shifts = Shift::all();
-    foreach($exit_shifts as $exit_shift){
-      $dt = Carbon::parse($exit_shift->date);
-      $exit_year = $dt->year;
-      $exit_month = $dt->month;
-      $exit_member_id = $exit_shift->member_id;
-
-      if($exit_year === $input_year && $exit_month === $input_month && $exit_member_id === $input_member_id){
-          
-      }else{
-
-      }
-
-      }
 
 
     $shift->save();

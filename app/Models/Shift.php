@@ -12,5 +12,8 @@ class Shift extends Model
       return $this->belongTo('App\Models\Member');
     }
 
-  
+    public function money(){
+      return $this->belongsTo('App\Models\Money');
+    }
+
 }

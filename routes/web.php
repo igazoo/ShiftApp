@@ -45,3 +45,7 @@ Route::post('shift/store', 'ShiftController@store')->name('shift.store');
 Route::get('shift/show/{id}', 'ShiftController@show')->name('shift.show');
 Route::get('shift/edit/{id}','ShiftController@edit')->name('shift.edit');
 Route::post('shift/update/{id}','ShiftController@update')->name('shift.update');
+
+Route::get('money/index', 'MoneyController@index')->name('money.index');
+Route::get('money/create', 'MoneyController@create')->name('money.create');
+Route::post('money/store', 'MoneyController@store')->name('money.store');
