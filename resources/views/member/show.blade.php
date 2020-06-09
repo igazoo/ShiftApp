@@ -38,7 +38,10 @@
           @csrf
           <a href="#" class="btn btn-danger" data-id ="{{$member->id}}" onclick="deletePost(this);">削除</a>
         </form>
-
+        <form class="" action="{{route('shift.index')}}" method="get">
+          @csrf
+          <input type="submit" name="" value="戻る"　class="btn btn-success">
+        </form>
 
         </div>
       </div>

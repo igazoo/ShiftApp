@@ -79,6 +79,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('money.index') }}">{{ __('給料') }}</a>
             </li>
+            
 
           </ul>
         </div>

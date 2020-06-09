@@ -20,7 +20,10 @@
             @csrf
             <input type="submit" class="btn btn-info" value="変更">
           </form>
-
+          <form class="" action="{{route('shift.index')}}" method="get">
+            @csrf
+            <input type="submit" name="" value="戻る"　class="btn btn-success">
+          </form>
 
 
         </div>

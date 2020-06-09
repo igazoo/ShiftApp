@@ -97,13 +97,11 @@
               </form>
             </div>
           </li>
-          @endguest
           <li class="nav-item">
             <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト') }}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('member.index') }}">{{ __('従業員') }}</a>
-          </li>
+          @endguest
+
         </ul>
       </div>
     </div>

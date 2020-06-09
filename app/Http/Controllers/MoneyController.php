@@ -21,8 +21,13 @@ class MoneyController extends Controller
     public function index()
     {
         //
-        $moneys = DB::table('moneys')->get();
-        return view('money.index',compact('moneys'));
+        $moneys = DB::table('money')->get();
+
+
+        $members = DB::table('members')->get();
+
+
+        return view('money.index',compact('moneys', 'members'));
     }
 
     /**
@@ -33,13 +38,16 @@ class MoneyController extends Controller
     public function create()
     {
         //
+        $now = Carbon::now();
+        $now_year = $now->year;
+        $now_month = $now->month;
 
         $members = DB::table('members')
         ->select('id','name')
         ->get();
 
 
-        return view('money.create',compact('members'));
+        return view('money.create',compact('members' ,'now_year' ,'now_month'));
 
     }
 
@@ -53,10 +61,33 @@ class MoneyController extends Controller
     {
         //
       $money = new Money ;
-      $money->year = 2020;
-      $money->month = 1;
-      $money->month_money  = 1000;
-      $money->member_id =1;
+
+      $money->year = $request->input('year');
+      $money->month = $request->input('month');
+
+
+      $money->member_id = $request->input('member_id');
+      $m = $money->member_id;
+
+      $shifts = DB::table('shifts')->get();
+      $money_array = [];
+
+      foreach($shifts as $shift){
+        $shift_date = Carbon::parse($shift->date);
+        //既存の年、月、member_idが入力されたものと一緒ならば既存のシフトのmoneyを配列にいれる
+        if($shift_date->year == $money->year && $shift_date->month == $money->month && $shift->member_id == $m){
+          $money_array[] = $shift->money;
+        }
+      }
+
+      //moneyの配列の合計　月の給料の合計
+      $sum =array_sum($money_array);
+      $money->month_money  = $sum;
+
+      //もし入力した従業員のidが存在してたら削除して重複しないようにする　常にMoneyテーブルには従業員のそれぞれのデータは一つのみ
+      $exit_moenys = Money::where('member_id',$money->member_id)->delete();
+
+
       $money->save();
       return  redirect('money/index');
 
