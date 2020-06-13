@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Money;
 use App\Models\Shift;
-use App\Models\Member;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -24,10 +24,10 @@ class MoneyController extends Controller
         $moneys = DB::table('money')->get();
 
 
-        $members = DB::table('members')->get();
+        $users = DB::table('users')->get();
 
 
-        return view('money.index',compact('moneys', 'members'));
+        return view('money.index',compact('moneys', 'users'));
     }
 
     /**
@@ -42,12 +42,12 @@ class MoneyController extends Controller
         $now_year = $now->year;
         $now_month = $now->month;
 
-        $members = DB::table('members')
+        $users = DB::table('users')
         ->select('id','name')
         ->get();
 
 
-        return view('money.create',compact('members' ,'now_year' ,'now_month'));
+        return view('money.create',compact('users' ,'now_year' ,'now_month'));
 
     }
 
@@ -66,8 +66,8 @@ class MoneyController extends Controller
       $money->month = $request->input('month');
 
 
-      $money->member_id = $request->input('member_id');
-      $m = $money->member_id;
+      $money->user_id = $request->input('user_id');
+      $m = $money->user_id;
 
       $shifts = DB::table('shifts')->get();
       $money_array = [];
@@ -75,7 +75,7 @@ class MoneyController extends Controller
       foreach($shifts as $shift){
         $shift_date = Carbon::parse($shift->date);
         //既存の年、月、member_idが入力されたものと一緒ならば既存のシフトのmoneyを配列にいれる
-        if($shift_date->year == $money->year && $shift_date->month == $money->month && $shift->member_id == $m){
+        if($shift_date->year == $money->year && $shift_date->month == $money->month && $shift->user_id == $m){
           $money_array[] = $shift->money;
         }
       }
@@ -85,7 +85,7 @@ class MoneyController extends Controller
       $money->month_money  = $sum;
 
       //もし入力した従業員のidが存在してたら削除して重複しないようにする　常にMoneyテーブルには従業員のそれぞれのデータは一つのみ
-      $exit_moenys = Money::where('member_id',$money->member_id)->delete();
+      $exit_moenys = Money::where('user_id',$money->user_id)->delete();
 
 
       $money->save();

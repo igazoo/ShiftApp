@@ -31,13 +31,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
 });
 
-Route::get('member/index','MemberController@index')->name('member.index');
-Route::get('member/create','MemberController@create')->name('member.create');
-Route::post('member/store','MemberController@store')->name('member.store');
-Route::get('member/show/{id}','MemberController@show')->name('member.show');
-Route::get('member/edit/{id}','MemberController@edit')->name('member.edit');
-Route::post('member/update/{id}','MemberController@update')->name('member.update');
-Route::post('member/destroy/{id}','MemberController@destroy')->name('member.destroy');
+Route::get('user/index','UserController@index')->name('user.index');
+// Route::get('member/create','MemberController@create')->name('member.create');
+// Route::post('member/store','MemberController@store')->name('member.store');
+Route::get('user/show/{id}','UserController@show')->name('user.show');
+// Route::get('member/edit/{id}','MemberController@edit')->name('member.edit');
+// Route::post('member/update/{id}','MemberController@update')->name('member.update');
+// Route::post('member/destroy/{id}','MemberController@destroy')->name('member.destroy');
 
 Route::get('shift/index','ShiftController@index')->name('shift.index');
 Route::get('shift/create' , 'ShiftController@create')->name('shift.create');
@@ -45,6 +45,8 @@ Route::post('shift/store', 'ShiftController@store')->name('shift.store');
 Route::get('shift/show/{id}', 'ShiftController@show')->name('shift.show');
 Route::get('shift/edit/{id}','ShiftController@edit')->name('shift.edit');
 Route::post('shift/update/{id}','ShiftController@update')->name('shift.update');
+Route::get('shift/user_create','ShiftController@user_create')->name('shift.user_create');
+Route::post('shift/user_store' ,'ShiftController@user_store')->name('shift.user_store');
 
 Route::get('money/index', 'MoneyController@index')->name('money.index');
 Route::get('money/create', 'MoneyController@create')->name('money.create');

@@ -18,12 +18,13 @@ class CreateShiftsTable extends Migration
             $table->date('date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('money');
             $table->integer('month_money');
+            $table->tinyInteger('status');
             $table->timestamps();
 
-            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

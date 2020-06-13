@@ -17,7 +17,7 @@ class CreateMoneysTable extends Migration
             $table->bigIncrements('id');
             $table->Integer('year');
             $table->Integer('month');
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('user_id');
             $table->Integer('month_money');
             $table->timestamps();
         });

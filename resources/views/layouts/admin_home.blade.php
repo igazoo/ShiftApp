@@ -74,12 +74,12 @@
               <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('member.index') }}">{{ __('従業員') }}</a>
+              <a class="nav-link" href="{{ route('user.index') }}">{{ __('従業員') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('money.index') }}">{{ __('給料') }}</a>
             </li>
-            
+          
 
           </ul>
         </div>

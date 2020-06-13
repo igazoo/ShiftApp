@@ -8,8 +8,8 @@ class Shift extends Model
 {
     //
 
-    public function member(){
-      return $this->belongTo('App\Models\Member');
+    public function user(){
+      return $this->belongTo('App\User');
     }
 
     public function money(){

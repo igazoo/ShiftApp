@@ -26,16 +26,16 @@
             <?php $id[]= $money->id; ?>
             <?php $max_id = max($id); ?>
             @if($money->id == $max_id)
-            <?php $money_member_id = $money->member_id; ?>
+            <?php $money_member_id = $money->user_id; ?>
             @endif
 
             <tbody>
-              @foreach($members as $member)
-              @if($member->id === $money_member_id)
+              @foreach($users as $user)
+              @if($user->id === $money_member_id)
               <tr>
                 <td>{{$money->year}}</td>
                 <td>{{$money->month}}</td>
-                <td>{{$member->name}}</td>
+                <td>{{$user->name}}</td>
                 <td>{{$money->month_money}}円</td>
               </tr>
               @endif

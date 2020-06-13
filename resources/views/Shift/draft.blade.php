@@ -18,11 +18,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           </form>
 
-          <form  action="{{route('shift.create')}}" method="get">
-            <button type="submit" class="btn btn-primary">
-              新規シフト追加
-            </button>
-          </form>
+          下書き
           <table class="table">
             <thead>
               <tr>
@@ -54,7 +50,6 @@
                 $end_hour = idate('H',$end);
                 ?>
                 <td>{{$end_hour}}時</td>
-                <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
 
                 </tr>
 
@@ -78,17 +73,12 @@
                   $end_hour = idate('H',$end);
                   ?>
                   <td>{{$end_hour}}時</td>
-                  <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
                   @endif
                   @endforeach
                 </tr>
                 </tbody>
               </table>
-              @foreach($status as $key => $value)
-                  <select name="" id="">
-                      <option value="{{$key}}">{{$value}}</option>
-                  </select>
-              @endforeach
+
             </div>
           </div>
         </div>

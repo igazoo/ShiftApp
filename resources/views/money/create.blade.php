@@ -19,9 +19,9 @@
                 <option value={{$now_month}} - 1>{{$now_month - 1}}月</option>
                 <option value={{$now_month}} - 1>{{$now_month - 2}}月</option>
               </select>
-              <select  name="member_id">
-                @foreach ($members as $member)
-                <option value={{$member->id}}>{{$member->name}}</option>
+              <select  name="user_id">
+                @foreach ($users as $user)
+                <option value={{$user->id}}>{{$user->name}}</option>
                 @endforeach
               </select>
 

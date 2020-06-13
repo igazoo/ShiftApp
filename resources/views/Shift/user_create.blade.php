@@ -5,10 +5,10 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">シフト作成</div>
+        <div class="card-header">下書きシフト作成</div>
 
           <div class="card-body">
-            <form method="post" action="{{route('shift.store')}}">
+            <form method="post" action="{{route('shift.user_store')}}">
               @csrf
               <lavel>
                  <input type="date" name="date" />
@@ -38,13 +38,13 @@
 
               </label>
               <select  name="user_id">
-                @foreach ($users as $user)
-                <option value={{$user->id}}>{{$user->name}}</option>
-                @endforeach
-              </select>
-              <input type="hidden" name="status" value=2>
 
-              <input class="btn btn-info" type="submit" value="登録する">
+                <option value={{$user->id}}>{{$user->name}}</option>
+
+              </select>
+              <input type="hidden" name="status" value=1>
+              <input class="btn btn-info" type="submit" value="申請する">
+
 
           </form>
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_home')
 
 @section('content')
 <div class="container">
@@ -60,6 +60,17 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        性別
+                        <input type="radio" name="gender"value=0 >男性
+                        <input type="radio" name="gender"value=1 >女性
+                        <br>
+                        種別
+                        <select  name="type">
+                          <option value="">選択してください</option>
+                          <option value=1>社員</option>
+                          <option value=2>大学生バイト</option>
+                          <option value=3>高校生バイト</option>
+                        </select>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

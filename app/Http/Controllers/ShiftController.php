@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shift;
-use App\Models\Member;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth; //追加
+use App\Enums\PublishStatus;//追加
 
 
 class ShiftController extends Controller
@@ -23,18 +25,22 @@ class ShiftController extends Controller
     $search_date = $request->input('date');
     $today = date("Y-m-d");
 
-    $members = DB::table('members')
+    $users = DB::table('users')
     ->select('id','name')
     ->get();
 
     $shifts =  DB::table('shifts')
-    ->select('id','date','start_time', 'end_time', 'member_id','money')
+    ->select('id','date','start_time', 'end_time', 'user_id','money')
     ->orderBy('start_time','asc')
     ->get();
+      $status = PublishStatus::toSelectArray();
 
 
-    return view('shift.index',compact('shifts', 'search_date','members','today'));
+    return view('shift.index',compact('shifts', 'search_date','users','today','status'));
   }
+
+  
+
 
   /**
   * Show the form for creating a new resource.
@@ -44,9 +50,10 @@ class ShiftController extends Controller
   public function create()
   {
     //
-    $members = Member::all();
-    return view('shift.create',compact('members'));
+    $users = User::all();
+    return view('shift.create',compact('users'));
   }
+
 
   /**
   * Store a newly created resource in storage.
@@ -61,7 +68,7 @@ class ShiftController extends Controller
     $shift->date = $request->input('date');
     $shift->start_time = $request->input('start_time');
     $shift->end_time = $request->input('end_time');
-    $shift->member_id = $request->input('member_id');
+    $shift->user_id = $request->input('user_id');
     //給料
     //開始時間と終了時間の差分と時給を掛け算してmoneyカラムに保存する
     $start =  strtotime($shift->start_time);
@@ -82,7 +89,8 @@ class ShiftController extends Controller
     $input_month = $input_date->month;
 
     //既存の従業員のid
-    $input_member_id = $shift->member_id;
+    $input_user_id = $shift->user_id;
+    $shift->status = $request->input('status');
 
 
     $shift->save();
@@ -160,5 +168,58 @@ class ShiftController extends Controller
   public function destroy($id)
   {
     //
+  }
+
+  /**
+  * Show the form for creating a new resource.
+  *
+  * @return \Illuminate\Http\Response
+  */
+
+  public function user_create(){
+    // 現在ログインしているユーザー情報の取得
+    $user = Auth::user();
+    return view('shift.user_create',compact('user'));
+  }
+
+  /**
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  public function user_store(Request $request)
+  {
+    $shift = new Shift;
+    $shift->date = $request->input('date');
+    $shift->start_time = $request->input('start_time');
+    $shift->end_time = $request->input('end_time');
+    $shift->user_id = $request->input('user_id');
+    //給料
+    //開始時間と終了時間の差分と時給を掛け算してmoneyカラムに保存する
+    $start =  strtotime($shift->start_time);
+    $end =  strtotime($shift->end_time);
+    //時給１０００円
+    $hourly_wage = 1000;
+    //開始時間と終了時間のhourだけ取り出す
+    $start_hour = idate('H',$start);
+    $end_hour = idate('H',$end);
+    $hour = intval($end_hour) - intval($start_hour);
+    //給料　＝　時間の差分　＊　時給　
+    $shift->money = intval($hour) * $hourly_wage;
+    $shift->month_money = $shift->money;
+
+    //入力された日付データを月と年に分ける　
+    $input_date = Carbon::parse($shift->date);
+    $input_year = $input_date->year;
+    $input_month = $input_date->month;
+
+    //既存の従業員のid
+    $input_user_id = $shift->user_id;
+    $shift->status = $request->input('status');
+
+
+    $shift->save();
+    return redirect('/home');
   }
 }

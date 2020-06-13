@@ -11,7 +11,7 @@ class Money extends Model
       return $table->hasMany('App\Models\Shift');
     }
 
-    public function members(){
-      return $table->hasMany('App\Models\Member');
+    public function users(){
+      return $table->hasMany('App\User');
     }
 }
