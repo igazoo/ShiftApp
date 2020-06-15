@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth; //追加
 use App\Enums\PublishStatus;//追加
+use App\Http\Requests\StoreShift;
 
 
 class ShiftController extends Controller
@@ -61,7 +62,7 @@ class ShiftController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
-  public function store(Request $request)
+  public function store(StoreShift $request)
   {
     //
     $shift = new Shift;
@@ -192,7 +193,7 @@ class ShiftController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
-  public function user_store(Request $request)
+  public function user_store(StoreShift $request)
   {
     $shift = new Shift;
     $shift->date = $request->input('date');
@@ -240,6 +241,7 @@ class ShiftController extends Controller
 
     $shifts =  DB::table('shifts')
     ->select('id','date','start_time', 'end_time', 'user_id','money','status')
+    ->orderBy('status','desc')
     ->orderBy('start_time','asc')
     ->get();
 

@@ -31,7 +31,7 @@
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
                 <th scope="col">詳細</th>
-              
+                <th scope="col">状態</th>
               </tr>
             </thead>
             <tbody>

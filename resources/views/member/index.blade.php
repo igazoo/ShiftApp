@@ -14,7 +14,7 @@
           @endif
           <form  action="{{route('member.create')}}" method="get">
             <button type="submit" class="btn btn-primary">
-              新規従業員
+              新規従業登録
             </button>
           </form>
           <table class="table">
