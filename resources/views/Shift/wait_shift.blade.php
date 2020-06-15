@@ -20,7 +20,7 @@
 
           <form  action="{{route('shift.create')}}" method="get">
             <button type="submit" class="btn btn-primary">
-              新規シフト追加
+              新規シフト申請
             </button>
           </form>
           <table class="table">
@@ -30,13 +30,13 @@
                 <th>名前</th>
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
-                <th scope="col">詳細</th>
-              
+                <th scope="col">状態</th>
+                <th scope="col">削除</th>
               </tr>
             </thead>
             <tbody>
               @foreach($shifts as $shift)
-              @if($shift->status === 2)
+              @if($shift->status ===1)
               @if($shift->date == $search_date)
               <tr>
                 <td>検索日付{{$shift->date}}</td>
@@ -79,10 +79,16 @@
                   $end_hour = idate('H',$end);
                   ?>
                   <td>{{$end_hour}}時</td>
-                  <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
+                  <td><a href="{{route('shift.user_edit', ['id' => $shift->id])}}">申請待ち</td>
+                    <td><form  action="{{route('shift.destroy',['id' => $shift->id])}}" method="post" id ="delete_{{$shift->id}}">
+                      @csrf
+                      <a href="#"  data-id ="{{$shift->id}}" onclick="deletePost(this);">削除</a>
+                    </form>
+                  </td>
                   @endif
                   @endif
                   @endforeach
+
                 </tr>
                 </tbody>
               </table>
@@ -92,4 +98,19 @@
         </div>
       </div>
     </div>
+    <script>
+    <!--
+    /*******
+
+    削除ボタンを押して一旦jsで確認メッセージを出す
+
+    *******/
+    //-->>
+      function deletePost(e){
+        'user strict';
+        if(confirm('本当に削除してもいいですか？')){
+          document.getElementById('delete_' + e.dataset.id).submit();
+        }
+      }
+    </script>
     @endsection

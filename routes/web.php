@@ -47,6 +47,12 @@ Route::get('shift/edit/{id}','ShiftController@edit')->name('shift.edit');
 Route::post('shift/update/{id}','ShiftController@update')->name('shift.update');
 Route::get('shift/user_create','ShiftController@user_create')->name('shift.user_create');
 Route::post('shift/user_store' ,'ShiftController@user_store')->name('shift.user_store');
+Route::get('shift/user_index', 'ShiftController@user_index')->name('shift.user_index');
+Route::get('shift/user_edit/{id}', 'ShiftController@user_edit')->name('shift.user_edit');
+Route::post('shift/user_update/{id}', 'ShiftController@user_update')->name('shift.user_update');
+Route::get('shift/wait_shift','ShiftController@wait_shift')->name('shift.wait_shift');
+Route::post('shift/destroy/{id}','shiftController@destroy')->name('shift.destroy');
+
 
 Route::get('money/index', 'MoneyController@index')->name('money.index');
 Route::get('money/create', 'MoneyController@create')->name('money.create');

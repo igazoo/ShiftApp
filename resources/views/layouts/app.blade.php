@@ -44,9 +44,7 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                              
 
                         @else
                             <li class="nav-item dropdown">
@@ -67,10 +65,10 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト') }}</a>
+                              <a class="nav-link" href="{{ route('shift.user_index') }}">{{ __('シフト一覧') }}</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="{{ route('shift.user_create') }}">{{ __('下書き') }}</a>
+                              <a class="nav-link" href="{{ route('shift.user_create') }}">{{ __('シフト申請') }}</a>
                             </li>
 
                         @endguest

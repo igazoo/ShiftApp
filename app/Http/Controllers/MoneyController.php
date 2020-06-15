@@ -60,6 +60,7 @@ class MoneyController extends Controller
     public function store(Request $request)
     {
         //
+
       $money = new Money ;
 
       $money->year = $request->input('year');
@@ -69,7 +70,7 @@ class MoneyController extends Controller
       $money->user_id = $request->input('user_id');
       $m = $money->user_id;
 
-      $shifts = DB::table('shifts')->get();
+      $shifts = DB::table('shifts')->where('status',2)->get();
       $money_array = [];
 
       foreach($shifts as $shift){

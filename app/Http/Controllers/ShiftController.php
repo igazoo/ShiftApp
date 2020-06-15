@@ -30,16 +30,16 @@ class ShiftController extends Controller
     ->get();
 
     $shifts =  DB::table('shifts')
-    ->select('id','date','start_time', 'end_time', 'user_id','money')
+    ->select('id','date','start_time', 'end_time', 'user_id','money','status')
     ->orderBy('start_time','asc')
     ->get();
-      $status = PublishStatus::toSelectArray();
 
 
-    return view('shift.index',compact('shifts', 'search_date','users','today','status'));
+
+    return view('shift.index',compact('shifts', 'search_date','users','today'));
   }
 
-  
+
 
 
   /**
@@ -168,6 +168,10 @@ class ShiftController extends Controller
   public function destroy($id)
   {
     //
+    $shift = Shift::find($id);
+    $shift->delete();
+
+    return redirect('shift/wait_shift');
   }
 
   /**
@@ -221,5 +225,80 @@ class ShiftController extends Controller
 
     $shift->save();
     return redirect('/home');
+  }
+
+  public function user_index(Request $request)
+  {
+    //
+    //検索フォーム用
+    $search_date = $request->input('date');
+    $today = date("Y-m-d");
+
+    $users = DB::table('users')
+    ->select('id','name')
+    ->get();
+
+    $shifts =  DB::table('shifts')
+    ->select('id','date','start_time', 'end_time', 'user_id','money','status')
+    ->orderBy('start_time','asc')
+    ->get();
+
+    return view('shift.user_index',compact('shifts', 'search_date','users','today'));
+  }
+
+  public function user_edit($id)
+  {
+    //
+    $shift = Shift::find($id);
+    $user = User::find($shift->user_id);
+
+    return view('shift.user_edit', compact('shift','user'));
+  }
+
+  public function user_update(Request $request, $id)
+  {
+    //
+    $shift = Shift::find($id);
+
+    $shift->date = $request->input('date');
+    $shift->start_time = $request->input('start_time');
+    $shift->end_time = $request->input('end_time');
+
+    //給料
+    //開始時間と終了時間の差分と時給を掛け算してmoneyカラムに保存する
+    $start =  strtotime($shift->start_time);
+    $end =  strtotime($shift->end_time);
+    //時給変数　１０００円
+    $hourly_wage = 1000;
+    //開始時間と終了時間のhourだけ取り出す
+    $start_hour = idate('H',$start);
+    $end_hour = idate('H',$end);
+    $hour = intval($end_hour) - intval($start_hour);
+    //給料　＝　時間の差分　＊　時給　
+    $shift->money = intval($hour) * $hourly_wage;
+    $shift->status = $request->input('status');
+
+    $shift->save();
+    return redirect('shift/index');
+  }
+
+
+  public function wait_shift(Request $request)
+  {
+    //
+    //検索フォーム用
+    $search_date = $request->input('date');
+    $today = date("Y-m-d");
+
+    $users = DB::table('users')
+    ->select('id','name')
+    ->get();
+
+    $shifts =  DB::table('shifts')
+    ->select('id','date','start_time', 'end_time', 'user_id','money','status')
+    ->orderBy('start_time','asc')
+    ->get();
+
+    return view('shift.wait_shift',compact('shifts', 'search_date','users','today'));
   }
 }

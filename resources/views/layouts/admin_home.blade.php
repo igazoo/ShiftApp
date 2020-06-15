@@ -71,7 +71,10 @@
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト') }}</a>
+              <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト一覧') }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('shift.wait_shift') }}">{{ __('申請待ちシフト一覧') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('user.index') }}">{{ __('従業員') }}</a>
@@ -79,7 +82,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('money.index') }}">{{ __('給料') }}</a>
             </li>
-          
+
 
           </ul>
         </div>

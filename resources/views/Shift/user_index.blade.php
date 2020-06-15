@@ -1,4 +1,4 @@
-@extends('layouts.admin_home')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -18,11 +18,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           </form>
 
-          <form  action="{{route('shift.create')}}" method="get">
-            <button type="submit" class="btn btn-primary">
-              新規シフト追加
-            </button>
-          </form>
+
           <table class="table">
             <thead>
               <tr>
@@ -30,13 +26,11 @@
                 <th>名前</th>
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
-                <th scope="col">詳細</th>
-              
+                <th scope="col">状態</th>
               </tr>
             </thead>
             <tbody>
               @foreach($shifts as $shift)
-              @if($shift->status === 2)
               @if($shift->date == $search_date)
               <tr>
                 <td>検索日付{{$shift->date}}</td>
@@ -79,8 +73,11 @@
                   $end_hour = idate('H',$end);
                   ?>
                   <td>{{$end_hour}}時</td>
-                  <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
-                  @endif
+                  <?php if($shift->status ===1): ?>
+                  <td>未決定</td>
+                  <?php else :?>
+                  <td>決定</td>  
+                  <?php endif; ?>
                   @endif
                   @endforeach
                 </tr>
