@@ -19,7 +19,7 @@
           </form>
 
           <form  action="{{route('shift.create')}}" method="get">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-success shift_btn">
               新規シフト申請
             </button>
           </form>

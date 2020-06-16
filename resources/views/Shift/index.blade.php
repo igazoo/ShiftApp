@@ -18,11 +18,9 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           </form>
 
-          <form  action="{{route('shift.create')}}" method="get">
-            <button type="submit" class="btn btn-primary">
-              新規シフト追加
-            </button>
-          </form>
+          <div class="shift_index">
+            ○本日のシフト○
+          </div>
           <table class="table">
             <thead>
               <tr>
@@ -31,7 +29,7 @@
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
                 <th scope="col">詳細</th>
-                <th scope="col">状態</th>
+              
               </tr>
             </thead>
             <tbody>

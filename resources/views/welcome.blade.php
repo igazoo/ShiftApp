@@ -42,10 +42,12 @@
 
             .content {
                 text-align: center;
+                color: #59CFB5;
+
             }
 
             .title {
-                font-size: 50px;
+                font-size: 70px;
             }
 
             .links > a {
@@ -56,7 +58,13 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+
             }
+            a:hover{
+              color:#59CFB5;
+              transition: 0.5s;
+            }
+
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -73,7 +81,7 @@
                         <a href="{{route('admin.login')}}">管理者</a>
                         <a href="{{ route('login') }}">Login</a>
 
-                      
+
                     @endauth
                 </div>
             @endif

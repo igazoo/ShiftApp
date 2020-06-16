@@ -19,6 +19,7 @@ class UserController extends Controller
         $users =  DB::table('users')
          ->select('id','name','gender','type')
          ->orderBy('type','asc')
+         ->orderBy('gender' ,'asc')
          ->get();
 
         return view('user.index',compact('users'));

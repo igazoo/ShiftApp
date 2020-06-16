@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(User::class, 20)->create();//20人のダミーデータ
+        factory(User::class, 15)->create();//20人のダミーデータ
 
     }
 }

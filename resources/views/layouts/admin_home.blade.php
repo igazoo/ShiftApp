@@ -22,7 +22,7 @@
   <link href="{{ asset('css/shift.css') }}" rel="stylesheet">
 
   <style>
-  body{background-color: skyblue;}
+  body{background-color: #59CFB5; }
 
   .time {
     position: relative;
@@ -49,6 +49,14 @@
   }
   input[type="date"]::-webkit-clear-button{
     -webkit-appearance: none;
+  }
+  a{
+    color:rgba(89, 94, 89, 0.76);
+    text-decoration: none;
+  }
+  a:hover{
+    color:#59CFB5;
+    text-decoration: none;
   }
 
 

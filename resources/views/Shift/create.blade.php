@@ -26,7 +26,7 @@
           <div class="card-body">
             <form method="post" action="{{route('shift.store')}}">
               @csrf
-              <div class="form-group row">
+              <div class="form-shift row">
                 <label for="datepicker" class="col-md-4 col-form-label text-md-right">日付</label>
                 <div class="col-md-6"  id="date_picker">
                   <Datepicker
@@ -77,7 +77,7 @@
             </div>
             <input type="hidden" name="status" value=2>
             <div class="shift_create_btn">
-              <input class="btn btn-info" type="submit" value="登録する"　id ="shift_btn">
+              <input class="btn btn-success" type="submit" value="登録する"　id ="shift_btn">
             </div>
 
           </form>

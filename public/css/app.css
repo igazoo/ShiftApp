@@ -1,23 +1,24 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
-.form-group {
+.form-shift {
   font-size: 18px;
-  color: rgba(0, 0, 255, 0.5);
+  color: rgba(48, 58, 50, 0.74);
 }
 
 .shift_create_btn {
   text-align: center;
   position: relative;
   padding: 10px 10px 10px 0;
+  margin-top: 20px;
 }
 
 #shift_btn {
-  width: 45%;
-  padding: 10px;
+  width: 47%;
+  padding: 8px;
 }
 
 #shift_btn:hover {
-  background: #38C8D9;
+  background: #59CFB5;
 }
 
 .cp_ipselect {
@@ -37,12 +38,12 @@
   font-size: 18px;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 255, 0.5);
+  border-bottom: 1px solid rgba(48, 58, 50, 0.74);
 }
 
 .cp_sl06:focus {
   outline: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 1px solid #59CFB5;
 }
 
 .cp_ipselect .cp_sl06 {
@@ -70,7 +71,7 @@
 }
 
 .cp_sl06_selectlabel {
-  color: rgba(0, 0, 255, 0.5);
+  color: rgba(48, 58, 50, 0.74);
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -83,7 +84,7 @@
 
 .cp_sl06:focus ~ .cp_sl06_selectlabel,
 .cp_sl06:valid ~ .cp_sl06_selectlabel {
-  color: rgba(0, 0, 255, 0.5);
+  color: #59CFB5;
   top: -10px;
   transition: 0.2s ease all;
   font-size: 14px;
@@ -102,7 +103,7 @@
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: rgba(0, 0, 225, 0.5);
+  background: #59CFB5;
   transition: 0.2s ease all;
 }
 
@@ -125,6 +126,80 @@
   left: 0;
   pointer-events: none;
   opacity: 0.5;
+}
+
+.shift_btn {
+  position: relative;
+  right: 100px;
+  float: right;
+  top: -40px;
+}
+
+.shift_index {
+  margin-top: 40px;
+  margin-left: 15px;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.user_name {
+  text-align: center;
+  font-size: 18px;
+  color: rgba(48, 58, 50, 0.74);
+  margin-bottom: 30px;
+}
+
+.user_p {
+  position: absolute;
+  text-align: center;
+  left: 193px;
+}
+
+.money_create_btn {
+  margin-bottom: 40px;
+}
+
+.radio-button-container {
+  color: #404040;
+  font-size: 16px;
+  text-align: center;
+}
+
+.radio-button-container .radio-button-label {
+  margin-bottom: 9px;
+}
+
+.radio-button-container .contents {
+  display: flex;
+  justify-content: center;
+}
+
+.radio-button-container .contents span {
+  font-size: 14px;
+  padding-right: 6px;
+}
+
+.radio-button-container .contents .radio-buttons {
+  display: inline-flex;
+  justify-content: space-between;
+  height: 25.5px;
+  margin: 0;
+  padding: 0;
+}
+
+.radio-button-container .contents .radio-buttons label {
+  padding: 0 3px;
+  margin: 0 6px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.radio-button-container .contents .radio-buttons input[type=radio] {
+  display: none;
+}
+
+.radio-button-container .contents .radio-buttons input[type=radio]:checked + label {
+  border-bottom: 3px solid #59CFB5;
 }
 
 /*!

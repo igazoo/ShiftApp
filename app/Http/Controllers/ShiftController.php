@@ -252,7 +252,10 @@ class ShiftController extends Controller
   {
     //
     $shift = Shift::find($id);
+
+
     $user = User::find($shift->user_id);
+
 
     return view('shift.user_edit', compact('shift','user'));
   }

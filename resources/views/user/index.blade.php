@@ -14,7 +14,7 @@
             {{ session('status') }}
           </div>
           @endif
-          <a class="btn btn-primary"href="{{route(('register'))}}">
+          <a class="btn btn-success"href="{{route(('register'))}}">
             新規従業員登録</a>
 
 

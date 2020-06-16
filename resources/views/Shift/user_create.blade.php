@@ -70,7 +70,7 @@
 
               <input type="hidden" name="status" value=1>
               <div class="shift_create_btn">
-                <input class="btn btn-info" type="submit" value="申請する"　id ="shift_btn">
+                <input class="btn btn-success" type="submit" value="申請する"　id ="shift_btn">
               </div>
 
           </form>

@@ -13,7 +13,7 @@
           </div>
           @endif
 
-          <form class="form-inline my-2 my-lg-0" action="{{route('shift.index')}}" method="get">
+          <form class="form-inline my-4" action="{{route('shift.user_index')}}" method="get">
             <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="検索" name ="date">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           </form>
@@ -49,8 +49,11 @@
                 $end_hour = idate('H',$end);
                 ?>
                 <td>{{$end_hour}}時</td>
-                <td><a href="{{route('shift.show', ['id' => $shift->id])}}">詳細</td>
-
+                <?php if($shift->status ===1): ?>
+                <td>未決定</td>
+                <?php else :?>
+                <td>決定</td>
+                <?php endif; ?>
                 </tr>
 
                 @elseif($today == $shift->date)
@@ -76,7 +79,7 @@
                   <?php if($shift->status ===1): ?>
                   <td>未決定</td>
                   <?php else :?>
-                  <td>決定</td>  
+                  <td>決定</td>
                   <?php endif; ?>
                   @endif
                   @endforeach

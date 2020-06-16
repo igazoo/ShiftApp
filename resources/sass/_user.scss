@@ -1,0 +1,39 @@
+.radio-button-container {
+  color: #404040;
+  font-size: 16px;
+  text-align: center;
+
+  .radio-button-label {
+    margin-bottom: 9px;
+
+  }
+  .contents {
+    display: flex;
+    justify-content: center;
+    span {
+      font-size: 14px;
+      padding-right: 6px;
+    }
+    .radio-buttons {
+      display: inline-flex;
+      justify-content: space-between;
+      height: 25.5px;
+      margin: 0;
+      padding: 0;
+
+      label {
+        padding: 0 3px;
+        margin: 0 6px;
+        cursor: pointer;
+        text-align: center;
+      }
+      input[type=radio] {
+        display: none;
+        &:checked + label {
+          border-bottom: 3px solid #59CFB5;
+
+        }
+      }
+    }
+  }
+}

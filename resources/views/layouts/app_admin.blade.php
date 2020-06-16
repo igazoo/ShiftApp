@@ -20,7 +20,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <style>
-  body{background-color: skyblue;}
+  body{background-color:#59CFB5;}
 
   .time {
     position: relative;
