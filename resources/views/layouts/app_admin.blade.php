@@ -101,7 +101,6 @@
               </form>
             </div>
           </li>
-
           @endguest
           <li class="nav-item">
             <a class="nav-link" href="{{ route('shift.index') }}">{{ __('シフト') }}</a>
