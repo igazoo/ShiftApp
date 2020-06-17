@@ -13,13 +13,8 @@
           </div>
           @endif
 
-          <form class="form-inline my-2 my-lg-0" action="{{route('shift.index')}}" method="get">
-            <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="検索" name ="date">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-          </form>
-
           <form  action="{{route('shift.create')}}" method="get">
-            <button type="submit" class="btn btn-success shift_btn">
+            <button type="submit" class="btn btn-success money_create_btn">
               新規シフト申請
             </button>
           </form>
@@ -31,7 +26,7 @@
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
                 <th scope="col">状態</th>
-                <th scope="col">削除</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>

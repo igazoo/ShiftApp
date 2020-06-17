@@ -18,7 +18,7 @@
 }
 
 #shift_btn:hover {
-  background: #59CFB5;
+  color: rgba(39, 215, 83, 0.8);
 }
 
 .cp_ipselect {
@@ -153,6 +153,10 @@
   position: absolute;
   text-align: center;
   left: 193px;
+}
+
+.delete_btn {
+  color: #CC3333;
 }
 
 .money_create_btn {

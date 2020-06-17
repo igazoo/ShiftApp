@@ -18,7 +18,6 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           </form>
 
-
           <table class="table">
             <thead>
               <tr>
@@ -50,46 +49,46 @@
                 ?>
                 <td>{{$end_hour}}時</td>
                 <?php if($shift->status ===1): ?>
-                <td>未決定</td>
-                <?php else :?>
-                <td>決定</td>
-                <?php endif; ?>
-                </tr>
-
-                @elseif($today == $shift->date)
-
-                <tr>
-                  <td>{{$shift->date}}</td>
-                  @foreach($users as $user)
-                  @if($user->id == $shift->user_id)
-                  <td>{{$user->name}}</td>
-                  @endif
-                  @endforeach
-
-                  <?php
-                  $start =  strtotime($shift->start_time);
-                  $start_hour = idate('H',$start);
-                  ?>
-                  <td>{{$start_hour}}時</td>
-                  <?php
-                  $end =  strtotime($shift->end_time);
-                  $end_hour = idate('H',$end);
-                  ?>
-                  <td>{{$end_hour}}時</td>
-                  <?php if($shift->status ===1): ?>
                   <td>未決定</td>
-                  <?php else :?>
+                <?php else :?>
                   <td>決定</td>
-                  <?php endif; ?>
-                  @endif
-                  @endforeach
-                </tr>
-                </tbody>
-              </table>
+                <?php endif; ?>
+              </tr>
 
-            </div>
-          </div>
+              @elseif($today == $shift->date)
+
+              <tr>
+                <td>{{$shift->date}}</td>
+                @foreach($users as $user)
+                @if($user->id == $shift->user_id)
+                <td>{{$user->name}}</td>
+                @endif
+                @endforeach
+
+                <?php
+                $start =  strtotime($shift->start_time);
+                $start_hour = idate('H',$start);
+                ?>
+                <td>{{$start_hour}}時</td>
+                <?php
+                $end =  strtotime($shift->end_time);
+                $end_hour = idate('H',$end);
+                ?>
+                <td>{{$end_hour}}時</td>
+                <?php if($shift->status ===1): ?>
+                  <td>未決定</td>
+                <?php else :?>
+                  <td>決定</td>
+                <?php endif; ?>
+                @endif
+                @endforeach
+              </tr>
+            </tbody>
+          </table>
+
         </div>
       </div>
     </div>
-    @endsection
+  </div>
+</div>
+@endsection

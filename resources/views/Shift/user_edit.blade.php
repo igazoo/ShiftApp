@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">シフト申請画面</div>
+        <div class="card-header">シフト申請確認画面</div>
 
         <div class="card-body">
           @if (session('status'))
@@ -64,7 +64,7 @@
 
             <input type="hidden" name="status" value=2>
             <div class="shift_create_btn">
-              <input class="btn btn-success" type="submit" value="申請する" id="shift_btn">
+              <input class="btn btn-success" type="submit" value="許可する" id="shift_btn">
             </div>
           </form>
 

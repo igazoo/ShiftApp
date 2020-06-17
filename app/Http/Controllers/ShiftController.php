@@ -108,8 +108,9 @@ class ShiftController extends Controller
   {
     //
     $shift = Shift::find($id);
+    $user = User::find($shift->user_id);
 
-    return view('shift.show', compact('shift'));
+    return view('shift.show', compact('shift','user'));
   }
 
   /**
@@ -122,8 +123,9 @@ class ShiftController extends Controller
   {
     //
     $shift = Shift::find($id);
+    $user = User::find($shift->user_id);
 
-    return view('shift.edit', compact('shift'));
+    return view('shift.edit', compact('shift','user'));
   }
 
   /**
@@ -225,7 +227,7 @@ class ShiftController extends Controller
 
 
     $shift->save();
-    return redirect('/home');
+    return redirect('shift/user_index');
   }
 
   public function user_index(Request $request)

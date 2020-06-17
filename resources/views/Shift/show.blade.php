@@ -13,24 +13,39 @@
             {{ session('status') }}
           </div>
           @endif
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">氏名</th>
+                <th scope="col">日給</th>
+                <th scope="col">変更</th>
+                <th scope="col">削除</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{$user->name}}</td>
+                <td>{{$shift->money}}円</td>
+                <td><a class="" href="{{route('shift.edit',['id'=>$shift->id])}}" method="get">
+                  変更
+                <td><form class="delete_btn" action="{{route('shift.destroy',['id' => $shift->id])}}" method="post" id ="delete_{{$shift->id}}">
+                  @csrf
+                  <a href="#" class="" data-id ="{{$shift->id}}" onclick="deletePost(this);">削除</a>
+                </form></td>
+                <td>
+                  <a class="" href="{{route('shift.index')}}" method="get">
+                    戻る
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-          日給　{{$shift->money}}円
-          <?php if($shift->status ==2): ?>
-          申請済
-        <?php endif ?>
 
-          <form class="" action="{{route('shift.edit',['id'=>$shift->id])}}" method="get">
-            @csrf
-            <input type="submit" class="btn btn-info" value="変更">
-          </form>
-          <form  action="{{route('shift.destroy',['id' => $shift->id])}}" method="post" id ="delete_{{$shift->id}}">
-            @csrf
-            <a href="#" class="btn btn-danger" data-id ="{{$shift->id}}" onclick="deletePost(this);">削除</a>
-          </form>
-          <form class="" action="{{route('shift.index')}}" method="get">
-            @csrf
-            <input type="submit" name="" value="戻る"　class="btn btn-success">
-          </form>
+
+
+
 
 
         </div>
