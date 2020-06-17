@@ -14,6 +14,7 @@
           @endif
 
           <form class="form-inline my-2 my-lg-0" action="{{route('shift.index')}}" method="get">
+            @csrf
             <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="検索" name ="date">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           </form>
@@ -29,10 +30,11 @@
                 <th scope="col">開始時間</th>
                 <th scope="col">終了時間</th>
                 <th scope="col">詳細</th>
-              
+
               </tr>
             </thead>
             <tbody>
+              @csrf
               @foreach($shifts as $shift)
               @if($shift->status === 2)
               @if($shift->date == $search_date)

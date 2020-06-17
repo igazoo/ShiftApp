@@ -14,6 +14,7 @@
             {{ session('status') }}
           </div>
           @endif
+          @csrf
           <a class="btn btn-success"href="{{route(('register'))}}">
             新規従業員登録</a>
 
@@ -29,6 +30,7 @@
             </thead>
             <tbody>
               <tbody>
+                @csrf
                 @foreach($users as $user)
                 <tr>
                   <td>{{$user->name}}</td>

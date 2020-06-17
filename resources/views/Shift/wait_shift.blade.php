@@ -14,6 +14,7 @@
           @endif
 
           <form  action="{{route('shift.create')}}" method="get">
+            @csrf
             <button type="submit" class="btn btn-success money_create_btn">
               新規シフト申請
             </button>
@@ -30,6 +31,7 @@
               </tr>
             </thead>
             <tbody>
+              @csrf
               @foreach($shifts as $shift)
               @if($shift->status ===1)
               @if($shift->date == $search_date)

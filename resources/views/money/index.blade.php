@@ -9,10 +9,12 @@
 
           <div class="card-body">
             <form  action="{{route('money.create')}}" method="get">
+              @csrf
               <button type="submit" class = "btn btn-success money_create_btn">従業員給料計算</button>
             </form>
           </form>
           <table class="table">
+            @csrf
             <thead>
               <tr>
                 <th scope="col">年</th>

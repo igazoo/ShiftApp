@@ -31,6 +31,7 @@
               </tr>
             </thead>
             <tbody>
+              @csrf
               @foreach($shifts as $shift)
               @if($shift->date == $search_date)
               <tr>
