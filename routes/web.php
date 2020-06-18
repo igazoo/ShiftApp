@@ -27,7 +27,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('register', 'Admin\RegisterController@register');
 });
 
-
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
