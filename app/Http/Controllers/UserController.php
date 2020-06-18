@@ -57,13 +57,7 @@ class UserController extends Controller
         //
         $user = User::find($id);
 
-        if($user->gender===0){
-           $gender ="男性";
-          }
-
-        if($user->gender === 1){
-           $gender = '女性';
-          }
+        
         if($user->type ===1){
            $type = '社員';
          }elseif($user->type === 2){
@@ -72,7 +66,7 @@ class UserController extends Controller
             $type = '高校生バイト';
           }
 
-        return view('user.show' , compact('user', 'gender' ,'type'));
+        return view('user.show' , compact('user' ,'type'));
     }
 
     /**
