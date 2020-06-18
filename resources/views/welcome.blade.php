@@ -79,7 +79,7 @@
       <a href="{{ url('/home') }}">Top</a>
       @else
       <a href="{{route('admin.login')}}">管理者</a>
-      <a href="{{ route('login') }}">ログイン</a>
+      <a href="{{ route('login') }}">従業員ログイン</a>
 
       @endauth
     </div>
