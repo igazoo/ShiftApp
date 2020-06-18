@@ -25,12 +25,9 @@
             </thead>
             <tbody>
               <tr>
-                @csrf
                 <td>{{$user->name}}</td>
                 <td>{{$shift->money}}円</td>
-                <td>
-                  @csrf
-                  <a class="" href="{{route('shift.edit',['id'=>$shift->id])}}" method="get">
+                <td><a class="" href="{{route('shift.edit',['id'=>$shift->id])}}" method="get">
                   変更
                 <td><form class="delete_btn" action="{{route('shift.destroy',['id' => $shift->id])}}" method="post" id ="delete_{{$shift->id}}">
                   @csrf
@@ -59,9 +56,7 @@
 <script>
 <!--
 /*******
-
 削除ボタンを押して一旦jsで確認メッセージを出す
-
 *******/
 //-->>
   function deletePost(e){
